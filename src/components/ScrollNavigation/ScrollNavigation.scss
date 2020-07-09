@@ -27,7 +27,7 @@
   li {
     list-style-type: none;
 
-    &:hover {
+    &:hover, &.selected {
       cursor: pointer;
 
       a {
