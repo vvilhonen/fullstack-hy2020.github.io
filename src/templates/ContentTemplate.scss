@@ -2,7 +2,15 @@
 
 .course {
   position: relative;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
+
+  @include from($desktop) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: $large;
+  }
 
   p {
     font-family: $font-heading;

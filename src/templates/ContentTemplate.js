@@ -29,7 +29,6 @@ export default class ContentTemplate extends Component {
     super(props);
 
     this.state = {
-      h1Top: 0,
       h1Title: '',
       otherTitles: '',
       showArrowUp: false,
@@ -64,7 +63,6 @@ export default class ContentTemplate extends Component {
     });
 
     this.setState({
-      h1Top: h1.offsetTop,
       h1Title: h1.innerText,
       otherTitles: [...h3Arr],
     });
@@ -110,10 +108,8 @@ export default class ContentTemplate extends Component {
           return <pre>{domToReact(children, parserOptions)}</pre>;
         } else if (type === 'tag' && attribs.class === 'content') {
           return (
-            <div className="container">
-              <div className="course-content col-6 push-right-3">
-                {domToReact(children, parserOptions)}
-              </div>
+            <div className="course-content col-6 push-right-3">
+              {domToReact(children, parserOptions)}
             </div>
           );
         } else if (type === 'tag' && attribs.class === 'tasks') {
@@ -121,8 +117,10 @@ export default class ContentTemplate extends Component {
             <Banner
               style={{
                 backgroundColor: colorCode,
+                marginLeft: 'calc(1/0.9/2*-10%)',
+                width: 'calc(1/0.9*100%)'
               }}
-              className="spacing spacing--after tasks"
+              className="spacing tasks"
             >
               <div className="container">
                 <div
@@ -209,20 +207,18 @@ export default class ContentTemplate extends Component {
           </Banner>
 
           <Element className="course">
-            <Element flex className="container" relative>
-              <ScrollNavigation
-                part={part}
-                letter={letter}
-                lang={lang}
-                currentPartTitle={navigation[lang][part][letter]}
-                currentPath={`/${
-                  lang === 'en' ? 'en/part' : lang === 'zh' ? 'zh/part':'osa'
-                }${part}/${snakeCase(navigation[lang][part][letter])}`}
-                colorCode={colorCode}
-                className="col-2 spacing"
-                style={{ top: this.state.h1Top }}
-              />
+            <ScrollNavigation
+              part={part}
+              letter={letter}
+              lang={lang}
+              currentPartTitle={navigation[lang][part][letter]}
+              currentPath={`/${
+                lang === 'en' ? 'en/part' : lang === 'zh' ? 'zh/part':'osa'
+              }${part}/${snakeCase(navigation[lang][part][letter])}`}
+              colorCode={colorCode}
+            />
 
+            <Element>
               <Element
                 className="course-content col-6 push-right-3"
                 autoBottomMargin
@@ -236,9 +232,10 @@ export default class ContentTemplate extends Component {
                   text={navigation[lang][part][letter]}
                 />
               </Element>
-            </Element>
 
-            {Parser(html, parserOptions)}
+              {Parser(html, parserOptions)}
+
+            </Element>
           </Element>
 
           <EditLink part={part} letter={letter} lang={lang} />
