@@ -116,11 +116,9 @@ export default class ContentTemplate extends Component {
           return (
             <Banner
               style={{
-                backgroundColor: colorCode,
-                marginLeft: 'calc(1/0.9/2*-10%)',
-                width: 'calc(1/0.9*100%)'
+                backgroundColor: colorCode
               }}
-              className="spacing tasks"
+              className="spacing tasks content-banner"
             >
               <div className="container">
                 <div
@@ -218,7 +216,7 @@ export default class ContentTemplate extends Component {
               colorCode={colorCode}
             />
 
-            <Element>
+            <Element className="course-content-container">
               <Element
                 className="course-content col-6 push-right-3"
                 autoBottomMargin
