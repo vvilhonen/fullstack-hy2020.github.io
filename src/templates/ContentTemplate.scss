@@ -1,7 +1,7 @@
 @import '../components/common.scss';
 
 .course-content-container {
-  width: 100%;
+  max-width: $large;
 }
 
 .course {
