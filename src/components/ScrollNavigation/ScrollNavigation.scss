@@ -1,28 +1,43 @@
 @import '../common.scss';
 
-.scroll-navigation-container {
+.scroll-navigation-container-sticky {
   display: none;
   @include from($desktop) {
     display: block;
     font-size: 16px;
     position: sticky;
-    min-width: 30%;
-    margin-right: -30%;
+    width: 100%;
     left: 0;
     top: -100px;
+    z-index: 199;
+    margin-bottom: 100vh;
   }
-  padding-top: 200px;
+}
+
+.scroll-navigation-container-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 100px);
+
+  width: 90%;
+  max-width: $large;
+  margin: 0 auto;
+
+  pointer-events: none;
 }
 
 .scroll-navigation {
+  background: yellow;
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 30%;
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
 
+  margin-top: 200px;
   padding-right: 1rem;
-  z-index: 199;
+
+  pointer-events: auto;
 
   li {
     list-style-type: none;

@@ -108,9 +108,11 @@ export default class ContentTemplate extends Component {
           return <pre>{domToReact(children, parserOptions)}</pre>;
         } else if (type === 'tag' && attribs.class === 'content') {
           return (
-            <div className="course-content col-6 push-right-3">
-              {domToReact(children, parserOptions)}
-            </div>
+            <Element className="course-content">
+              <Element className="col-6 push-right-3">
+                {domToReact(children, parserOptions)}
+              </Element>
+            </Element>
           );
         } else if (type === 'tag' && attribs.class === 'tasks') {
           return (
@@ -120,21 +122,21 @@ export default class ContentTemplate extends Component {
               }}
               className="spacing tasks content-banner"
             >
-              <div className="container">
-                <div
-                  className="course-content col-6 push-right-3"
+                <Element
+                  className="course-content"
                   style={{
                     borderColor: colorCode,
                     backgroundColor: 'transparent',
                   }}
                 >
-                  {children.name === 'pre' ? (
-                    <pre>{domToReact(children, parserOptions)}</pre>
-                  ) : (
-                    domToReact(children, parserOptions)
-                  )}
-                </div>
-              </div>
+                  <Element className="col-6 push-right-3">
+                    {children.name === 'pre' ? (
+                      <pre>{domToReact(children, parserOptions)}</pre>
+                    ) : (
+                      domToReact(children, parserOptions)
+                    )}
+                  </Element>
+              </Element>
             </Banner>
           );
         }
@@ -218,17 +220,19 @@ export default class ContentTemplate extends Component {
 
             <Element className="course-content-container">
               <Element
-                className="course-content col-6 push-right-3"
+                className="course-content"
                 autoBottomMargin
               >
-                <p className="col-1 letter" style={{ borderColor: colorCode }}>
-                  {letter}
-                </p>
+                <Element className="col-6 push-right-3">
+                  <p className="col-1 letter" style={{ borderColor: colorCode }}>
+                    {letter}
+                  </p>
 
-                <SubHeader
-                  headingLevel="h1"
-                  text={navigation[lang][part][letter]}
-                />
+                  <SubHeader
+                    headingLevel="h1"
+                    text={navigation[lang][part][letter]}
+                  />
+                </Element>
               </Element>
 
               {Parser(html, parserOptions)}

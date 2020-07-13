@@ -118,13 +118,15 @@ class ScrollNavigation extends Component {
     const { part } = this.props;
 
     return (
-      <Element className="scroll-navigation-container">
-        <Element
-          tag="ul"
-          dirColumn
-          className={`scroll-navigation ${this.props.className}`}
-        >
-          {this.loopThroughPartsNode(navigation[this.props.lang][part])}
+      <Element className="scroll-navigation-container-sticky">
+        <Element className="scroll-navigation-container-center">
+          <Element
+            tag="ul"
+            dirColumn
+            className={`scroll-navigation ${this.props.className}`}
+          >
+            {this.loopThroughPartsNode(navigation[this.props.lang][part])}
+          </Element>
         </Element>
       </Element>
     );

@@ -1,20 +1,9 @@
 @import '../components/common.scss';
 
-.course-content-container {
-  max-width: $large;
-}
-
 .course {
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-
-  @include from($desktop) {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    max-width: $large;
-  }
 
   p {
     font-family: $font-heading;
@@ -118,8 +107,19 @@
   }
 }
 
+.course-content-container {
+
+}
+
 .course-content {
-  max-width: 100%;
+  width: 90%;
+  max-width: $large;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include from($tablet) {
+    padding: 0;
+  }
 }
 
 .tasks {
